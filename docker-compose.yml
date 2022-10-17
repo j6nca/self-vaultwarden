@@ -11,6 +11,8 @@ services:
       - 127.0.0.1:3012:3012
     environment:
       - WEBSOCKET_ENABLED=true
+      # UNCOMMENT BELOW AFTER MASTER ACCOUNT IS CREATED
+      # - SIGNUPS ALLOWED=false
   caddy:
     image: caddy:2
     container_name: caddy
