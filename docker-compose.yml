@@ -12,7 +12,9 @@ services:
     environment:
       - WEBSOCKET_ENABLED=true
       # UNCOMMENT BELOW AFTER MASTER ACCOUNT IS CREATED
-      # - SIGNUPS ALLOWED=false
+      # - SIGNUPS_ALLOWED=false
+      # If you want to enable admin panel, uncomment below
+      # - ADMIN_TOKEN=
   caddy:
     image: caddy:2
     container_name: caddy
