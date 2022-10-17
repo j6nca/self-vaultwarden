@@ -1,0 +1,12 @@
+your_domain_name {
+encode gzip
+
+# The negotiation endpoint is also proxied to Rocket
+reverse_proxy /notifications/hub/negotiate vaultwarden:80
+
+# Notifications redirected to the websockets server
+reverse_proxy /notifications/hub vaultwarden:3012
+
+# Send all other traffic to the regular Vaultwarden endpoint
+reverse_proxy vaultwarden:80
+}

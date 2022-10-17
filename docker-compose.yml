@@ -1,0 +1,24 @@
+version: '3'
+services:
+  vaultwarden:
+    restart: on-failure
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    volumes:
+      - ./vw-data/:/data/
+    ports:
+      - 127.0.0.1:8080:80
+      - 127.0.0.1:3012:3012
+    environment:
+      - WEBSOCKET_ENABLED=true
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy:/root/.local/share/caddy
+      - ./caddy_data:/data
